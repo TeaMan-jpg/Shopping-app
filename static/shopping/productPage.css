@@ -1,0 +1,22 @@
+.card {
+
+    width: 700px;
+}
+
+.images {
+    width: 500px; /* Full width within the parent container */
+    max-width: 400px; /* Restrict the maximum width */
+    height: 200px; /* Maintain the aspect ratio */
+    display: block; /* Center alignment with margin auto trick */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+}
+
+.prodInfo {
+    width: 600px;
+    margin-right: 200px;
+}
+
+.dsds {
+    width: 1400px;
+}
