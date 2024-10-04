@@ -1,0 +1,20 @@
+{% extends 'shopping/base.html' %}
+
+
+{%block title%}
+Login
+{%endblock%}
+
+
+{% block content %}
+<div class="forms d-flex justify-content-center align-items-center min-vh-100">
+    <div class="logout bg-primary text-white p-3 rounded">
+        <h2>Do you want to logout?</h2>
+        <form action="" method="post" class="text-center mt-5">
+            {%csrf_token%}
+            <button type="submit" class="btn btn-danger">Logout</button>
+            <button class="btn btn-success" type="submit">Back</button>
+        </form>
+    </div>
+</div>
+{%endblock%}

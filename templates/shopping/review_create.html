@@ -1,0 +1,45 @@
+{% extends 'shopping/base.html'%}
+
+
+
+{%block title%}
+Create Product
+{%endblock%}
+
+
+{%block content%}
+<div class="productCreate  d-flex justify-content-center align-items-center min-vh-100">
+  <div class="formed d-flex flex-column m-4">
+    <h2 class="m-4 text-center">Add Review</h2>
+        <form action="" method="post">
+            {%csrf_token%}
+            <div class="form-group d-flex flex-column w-100 m-4">
+                <label for="{{ form.name.id_for_label }} m-2">{{ form.title.label }}</label>
+                {{ form.title }} 
+                {% if form.title.errors %}
+                    <div class="text-danger">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group d-flex flex-column w-100 m-4">
+                <label for="{{ form.rating.id_for_label }} mb-2">{{ form.rating.label }}</label>
+                {{ form.rating }} 
+                {% if form.rating.errors %}
+                    <div class="text-danger">{{ form.rating.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group d-flex flex-column w-100 m-4">
+                <label for="{{ form.desc.id_for_label }} mb-2">{{ form.desc.label }}</label>
+                {{ form.desc }} 
+                {% if form.desc.errors %}
+                    <div class="text-danger">{{ form.desc.errors }}</div>
+                {% endif %}
+            </div>
+                
+            
+            <div>
+                <button type="submit" class="btn btn-success mt-4 m-4 text-center">Add Review</button>
+            </div>
+        </form>
+  </div>
+</div>
+{%endblock%}

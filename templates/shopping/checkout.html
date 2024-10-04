@@ -1,0 +1,30 @@
+{% extends 'shopping/base.html' %}
+
+{%block title%}
+
+Payment Successful
+{%endblock%}
+
+{%block script%}
+<script src="https://js.stripe.com/v3/"></script>
+{%endblock%}
+
+{%block content%}
+<div class="product">
+    <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+    <div class="description">
+      <h3>Stubborn Attachments</h3>
+      <h5>$20.00</h5>
+    </div>
+  </div>
+<div class="logout forms d-flex justify-content-center align-items-center min-vh-100"></div>
+    <div class="logout bg-primary text-white p-3 rounded">
+        <h2>Do you want to proceed to checkout?</h2>
+        <form action="/create-checkout-session" method="POST">
+            {%csrf_token%}
+            <button type="submit" class="btn btn-success">Checkout</button>
+          </form>
+    </div>
+</div>
+
+{%endblock%}

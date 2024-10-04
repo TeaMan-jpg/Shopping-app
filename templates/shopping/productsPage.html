@@ -1,0 +1,29 @@
+{%extends 'shopping/base.html'%}
+{%load static%}
+{%block title%}
+Products
+{%endblock%}
+
+
+{%block content%}
+{%for product in products%}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{% static 'shopping/imaged.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.product.desc}}</p>
+      
+      <h5 class="card-text">{{product.price}}</h3>
+      <h6 class="card-text">{{product.author}}</h3>
+      <p class="card-text"> {{product.desc}}</p>
+      <p class="card-text">{{product.quantity}}</p>
+      <a  href="{% url 'shopping:product-detail' pk=product.pk %}">
+            <button class="btn btn-success">Go to product</button>
+      </a>
+    </div>
+  </div>
+   
+
+{%endfor%}
+{%endblock%}

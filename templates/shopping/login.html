@@ -1,0 +1,36 @@
+{% extends 'shopping/base.html' %}
+
+
+{%block title%}
+Login
+{%endblock%}
+
+{%block styling%}
+
+{%load static%}
+<link rel="stylesheet" href="{% static 'shopping/login.css' %}">
+
+{%endblock%}
+
+
+{% block content %}
+<div class="login d-flex justify-content-center align-items-center min-vh-100">
+    <div class="formed d-flex flex-column">
+        <h2 class="text-center">Login</h2>
+        <form action="" method="post">
+            {%csrf_token%}
+            <div class="form-group mb-4">
+                <label for="exampleInputEmail1" >Username</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+            <div class="form-group mb-4">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="text" name="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="buttons text-center">
+                <button type="submit" class="btn btn-success w-50 text-center">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

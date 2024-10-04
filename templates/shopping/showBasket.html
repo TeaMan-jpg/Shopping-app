@@ -1,0 +1,42 @@
+ 
+{%extends 'shopping/base.html'%}
+{% load static %}
+{%block title%}
+Products
+{%endblock%}
+
+
+{%block content%}
+<h1>Your Basket</h1>
+
+{% if basket_items %}
+    <ul>
+        {% for product in basket_items %}
+            <li>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{% static 'shopping/imaged.png' %}" alt="Card image cap">
+                    <div class="card-body">
+                     
+                      <h5 class="card-title">{{product.product.name}}</h5>
+                      <p class="card-text">{{product.product.desc}}</p>
+                      <a href="{% url 'shopping:delete-product-basket' pk=product.product.pk%}" class="btn btn-danger">Delete</a>
+                      <div class="logout forms d-flex justify-content-center align-items-center min-vh-100"></div>
+                        <div class="logout  text-white p-3 rounded">
+                          
+                            <form action="{%url 'shopping:create-checkout-session' pk=product.product.pk%}" method="POST">
+                                {%csrf_token%}
+                                <button type="submit" class="btn btn-success">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+           
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>{{request.user.username}}</p>
+    <p>Your basket is empty.</p>
+{% endif %}
+{%endblock%}

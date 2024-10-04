@@ -1,0 +1,71 @@
+{% extends 'shopping/base.html'%}
+
+{% block title %}
+Product
+{% endblock %}
+
+{% block styling %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'shopping/productPage.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="dsds d-flex justify-content-center align-items-center min-vh-100">
+    <div class="prodInfo">
+        <!-- Product Image -->
+        <div class="img">
+            <img src="{% static 'shopping/imaged.png' %}" class="images" alt="image..">
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews">
+            <h2>Reviews</h2>
+
+            <!-- Loop through reviews -->
+            {% for review in reviews %}
+            <div class="card mb-3"> <!-- Added margin-bottom for spacing between cards -->
+                <div class="card-body">
+                    <h5>{{ review.title }}</h5>
+                    <p>{{ review.desc }}</p>
+                    <a href="{% url 'shopping:delete-review' pk=review.pk %}">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Add Review Button or Message -->
+            <div class="addReview">
+                {% if request.user == product.author %}
+                    <h5>You cannot review your own product</h5>
+                {% else %}
+                <a href="{% url 'shopping:add-review' pk=product.pk %}">
+                    <button class="btn btn-success mt-4">Add review</button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Information Section -->
+    <div class="info border rounded p-3">
+        <h1>{{ product.pk }}</h1>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price }}</p>
+        <p>Reporter: {{ product.author }}</p>
+        <p>Description: {{ product.desc }}</p>
+        <p>Quantity: {{ product.quantity }}</p>
+
+        <!-- Add to Basket or Restriction Message -->
+        {% if request.user == product.author %}
+            <h5>You cannot buy your own product</h5>
+        {% else %}
+        <a href="{% url 'shopping:add-to-basket' pk=product.pk %}">
+            <button class="btn btn-success mt-4 ml-2">Add to Basket</button>
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
